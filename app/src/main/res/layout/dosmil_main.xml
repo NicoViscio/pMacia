@@ -1,0 +1,85 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FAF8EF"
+    tools:context=".MainActivity"
+    android:padding="16dp"
+    android:gravity="center_horizontal">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp">
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Score: 0"
+            android:textSize="24sp"
+            android:textColor="#776E65"
+            android:gravity="center"
+            android:background="@drawable/score_background"
+            android:padding="12dp"
+            android:elevation="4dp"/>
+    </RelativeLayout>
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_marginTop="60sp"
+        android:layout_width="350sp"
+        android:layout_height="350sp"
+        android:layout_gravity="center"
+        android:columnCount="4"
+        android:rowCount="4"
+        android:padding="8dp"
+        android:background="@drawable/grid_background"
+        android:elevation="8dp"
+        android:clipToPadding="false">
+    </GridLayout>
+
+    <LinearLayout
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="16dp">
+
+        <Button
+            android:id="@+id/menuButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="Menu"
+            android:textSize="18sp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/game_button_background"
+            android:textColor="#FFFFFF"/>
+
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
+            android:layout_weight="1"
+            android:text="Restart"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/game_button_background"
+            android:textColor="#FFFFFF"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/endGameButton"
+        android:layout_width="350sp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="End Game"
+        android:textSize="24sp"
+        android:padding="16dp"
+        android:background="@drawable/end_game_button_background"
+        android:textColor="#FFFFFF"/>
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.project_final;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +18,7 @@ public class RegisterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        Button btnReturn = findViewById(R.id.atras);
 
         databaseHelper = new DBLogin(this);
         editTextUsername = findViewById(R.id.editTextRegisterUsername);
@@ -59,6 +61,14 @@ public class RegisterActivity extends AppCompatActivity {
                     Toast.makeText(RegisterActivity.this, "Error al crear la cuenta",
                             Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

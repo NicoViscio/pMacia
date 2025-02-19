@@ -1,9 +1,9 @@
 package com.example.project_final;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -16,21 +16,22 @@ public class GameSelectionActivity extends AppCompatActivity {
 
         LinearLayout gameOption1 = findViewById(R.id.gameOption1);
         LinearLayout gameOption2 = findViewById(R.id.gameOption2);
+        Button btnReturn = findViewById(R.id.atras);
 
-        gameOption1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Implementar la lógica para iniciar el juego 1
-                Toast.makeText(GameSelectionActivity.this, "Starting Game 1", Toast.LENGTH_SHORT).show();
-            }
+        gameOption1.setOnClickListener(v -> {
+            Intent intent = new Intent(GameSelectionActivity.this, CandyCrushActivity.class);
+            startActivity(intent);
         });
 
-        gameOption2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Implementar la lógica para iniciar el juego 2
-                Toast.makeText(GameSelectionActivity.this, "Starting Game 2", Toast.LENGTH_SHORT).show();
-            }
+        gameOption2.setOnClickListener(v -> {
+            Intent intent = new Intent(GameSelectionActivity.this, DosmilActivity.class);
+            startActivity(intent);
+        });
+
+        btnReturn.setOnClickListener(v -> {
+            Intent intent = new Intent(GameSelectionActivity.this, MainMenuActivity.class);
+            startActivity(intent);
         });
     }
+
 }

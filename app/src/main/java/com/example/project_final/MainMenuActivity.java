@@ -31,16 +31,15 @@ public class MainMenuActivity extends AppCompatActivity {
         btnLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Implementar la lógica para mostrar el leaderboard
-                Toast.makeText(MainMenuActivity.this, "Leaderboard", Toast.LENGTH_SHORT).show();
+                // Iniciar la actividad de selección de juego
+                Intent intent = new Intent(MainMenuActivity.this, LeaderboardActivity.class);
+                startActivity(intent);
             }
         });
 
-        btnExitGame.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        btnExitGame.setOnClickListener(v -> {
+            finishAffinity(); // Cierra todas las actividades en el stack
+            System.exit(0); // Asegura que la app se cierre completamente
         });
     }
 }

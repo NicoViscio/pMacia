@@ -28,10 +28,6 @@
             android:name=".RegisterActivity"
             android:exported="false" />
 
-        <!-- Actividad de Bienvenida -->
-        <activity
-            android:name=".WelcomeActivity"
-            android:exported="false" />
 
         <activity
             android:name=".LoginActivity"
@@ -43,6 +39,26 @@
 
         <activity
             android:name=".GameSelectionActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CandyCrushActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".GameOverCandyActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DosmilActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".GameOverDosmil"
+            android:exported="false" />
+
+        <activity
+            android:name=".LeaderboardActivity"
             android:exported="false" />
 
     </application>
