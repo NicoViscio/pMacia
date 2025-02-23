@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +21,6 @@ public class MainMenuActivity extends AppCompatActivity {
         btnSelectGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar la actividad de selección de juego
                 Intent intent = new Intent(MainMenuActivity.this, GameSelectionActivity.class);
                 startActivity(intent);
             }
@@ -31,15 +29,14 @@ public class MainMenuActivity extends AppCompatActivity {
         btnLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar la actividad de selección de juego
                 Intent intent = new Intent(MainMenuActivity.this, LeaderboardActivity.class);
                 startActivity(intent);
             }
         });
 
         btnExitGame.setOnClickListener(v -> {
-            finishAffinity(); // Cierra todas las actividades en el stack
-            System.exit(0); // Asegura que la app se cierre completamente
+            finishAffinity();
+            System.exit(0);
         });
     }
 }

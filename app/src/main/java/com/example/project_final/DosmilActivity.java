@@ -68,13 +68,12 @@ public class DosmilActivity extends AppCompatActivity {
         });
 
         restartButton.setOnClickListener(v -> {
-            recreate(); // Esto volverá a crear la actividad desde cero
+            recreate();
         });
 
         Button endGameButton = findViewById(R.id.endGameButton);
 
         endGameButton.setOnClickListener(v -> {
-            // Ir a la pantalla de Game Over con la puntuación actual
             Intent intent = new Intent(this, GameOverDosmil.class);
             intent.putExtra("SCORE", score);
             startActivity(intent);
@@ -83,7 +82,6 @@ public class DosmilActivity extends AppCompatActivity {
     }
 
     private void resetGame() {
-        // Reiniciar variables
         score = 0;
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
@@ -96,21 +94,21 @@ public class DosmilActivity extends AppCompatActivity {
     }
 
     private boolean isGameOver() {
-        // Verificar si hay celdas vacías
+        // Verifies if exists empty cells
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE; j++) {
                 if (values[i][j] == 0) return false;
             }
         }
 
-        // Verificar si hay movimientos posibles horizontalmente
+        // Checks possible horizontal movements
         for (int i = 0; i < GRID_SIZE; i++) {
             for (int j = 0; j < GRID_SIZE - 1; j++) {
                 if (values[i][j] == values[i][j + 1]) return false;
             }
         }
 
-        // Verificar si hay movimientos posibles verticalmente
+        // Checks possible vertical movements
         for (int j = 0; j < GRID_SIZE; j++) {
             for (int i = 0; i < GRID_SIZE - 1; i++) {
                 if (values[i][j] == values[i + 1][j]) return false;
@@ -196,7 +194,7 @@ public class DosmilActivity extends AppCompatActivity {
                 spawnRandomTile();
                 updateGrid();
                 animateGridChanges();
-                checkGameOver(); // Añadir verificación de game over después de cada movimiento
+                checkGameOver();
                 return true;
         }
         return super.onTouchEvent(event);

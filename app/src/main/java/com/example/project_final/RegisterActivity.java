@@ -35,30 +35,30 @@ public class RegisterActivity extends AppCompatActivity {
                 String confirmPassword = editTextConfirmPassword.getText().toString();
 
                 if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                    Toast.makeText(RegisterActivity.this, "Por favor, rellene todos los campos",
+                    Toast.makeText(RegisterActivity.this, "Please, fill in all the fields",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!password.equals(confirmPassword)) {
-                    Toast.makeText(RegisterActivity.this, "Las contraseñas no coinciden",
+                    Toast.makeText(RegisterActivity.this, "The passwords do not match1452 ",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (!checkBoxTerms.isChecked()) {
                     Toast.makeText(RegisterActivity.this,
-                            "Debe aceptar los términos y condiciones",
+                            "You must accept the terms and conditions",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (databaseHelper.addUser(username, password)) {
-                    Toast.makeText(RegisterActivity.this, "Cuenta creada exitosamente",
+                    Toast.makeText(RegisterActivity.this, "Account successfully created",
                             Toast.LENGTH_SHORT).show();
                     finish();
                 } else {
-                    Toast.makeText(RegisterActivity.this, "Error al crear la cuenta",
+                    Toast.makeText(RegisterActivity.this, "Error creating the account",
                             Toast.LENGTH_SHORT).show();
                 }
             }

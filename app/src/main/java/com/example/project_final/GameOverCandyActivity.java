@@ -13,14 +13,13 @@ public class GameOverCandyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.candy_game_over);
 
-        // Obtener el puntaje
+        // Gets the score
         int score = getIntent().getIntExtra("SCORE", 0);
 
-        // Guardar el puntaje en la base de datos
+        // Saves the score on the data base
         DatabaseHelper dbHelper = new DatabaseHelper(this);
         dbHelper.insertCandyScore(score);
 
-        // Configurar los botones
         Button restartButton = findViewById(R.id.restartButton);
         Button gobackButton = findViewById(R.id.goBack);
 
@@ -36,8 +35,8 @@ public class GameOverCandyActivity extends AppCompatActivity {
             finish();
         });
 
-        // Mostrar el puntaje
+        // Show score
         TextView scoreText = findViewById(R.id.scoreText);
-        scoreText.setText("Puntaje: " + score);
+        scoreText.setText("Score: " + score);
     }
 }

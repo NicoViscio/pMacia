@@ -23,24 +23,22 @@ public class LeaderboardActivity extends AppCompatActivity {
         candyTable = findViewById(R.id.candyTable);
         dosmilTable = findViewById(R.id.dosmilTable);
 
-        // Configurar el botón de retorno
         Button btnReturn = findViewById(R.id.atras);
         btnReturn.setOnClickListener(v -> {
-            finish(); // Cierra esta actividad y vuelve a la anterior
+            finish();
         });
 
-        // Cargar puntajes
         loadScores();
     }
 
     private void loadScores() {
-        // Cargar puntajes de Candy Crush
+        // Load Candy Crush scores
         List<DatabaseHelper.ScoreEntry> candyScores = dbHelper.getCandyScores();
         for (DatabaseHelper.ScoreEntry score : candyScores) {
             addRowToTable(candyTable, score);
         }
 
-        // Cargar puntajes de 2048
+        // Load 2048 scores
         List<DatabaseHelper.ScoreEntry> dosmilScores = dbHelper.getDosmilScores();
         for (DatabaseHelper.ScoreEntry score : dosmilScores) {
             addRowToTable(dosmilTable, score);

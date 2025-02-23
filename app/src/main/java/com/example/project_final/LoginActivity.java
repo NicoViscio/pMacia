@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
                 String password = editTextPassword.getText().toString();
 
                 if (username.isEmpty() || password.isEmpty()) {
-                    Toast.makeText(LoginActivity.this, "Por favor, rellene todos los campos",
+                    Toast.makeText(LoginActivity.this, "Please, fill in all the fields.",
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(LoginActivity.this, "Usuario o contraseña incorrectos",
+                    Toast.makeText(LoginActivity.this, "User or password incorrect",
                             Toast.LENGTH_SHORT).show();
                 }
             }

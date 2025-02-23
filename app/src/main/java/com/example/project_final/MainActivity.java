@@ -20,32 +20,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inicializar vistas
         TextView textBeenThere = findViewById(R.id.textBeenThere);
         ImageView logo = findViewById(R.id.image1);
         TextView textDoneThat = findViewById(R.id.textDoneThat);
 
-        // Inicializar Handler
         handler = new Handler();
 
-        // Configurar animaciones
         scheduleAnimation(textBeenThere, R.anim.fade_in, 500, true);
         scheduleAnimation(logo, R.anim.scale_up, 1500, false);
         scheduleAnimation(textDoneThat, R.anim.fade_in, 2500, true);
 
-        // Navegar a la siguiente actividad
         handler.postDelayed(this::navigateToNextActivity, 5700);
     }
 
-    /**
-     * Método para programar una animación en una vista con un retraso opcional.
-     *
-     * @param view La vista a animar.
-     * @param animationResId El recurso de animación.
-     * @param delay Tiempo de retraso antes de iniciar la animación (en milisegundos).
-     * @param applyPulse Si debe aplicar una animación de "pulso" después de la animación inicial.
-     */
-
+    // Logo animation
     private void scheduleAnimation(View view, int animationResId, int delay, boolean applyPulse) {
         handler.postDelayed(() -> {
             Animation animation = AnimationUtils.loadAnimation(this, animationResId);
@@ -71,10 +59,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }, delay);
     }
-
-    /**
-     * Navega a la siguiente actividad.
-     */
 
     private void navigateToNextActivity() {
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);

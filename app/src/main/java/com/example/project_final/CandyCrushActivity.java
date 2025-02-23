@@ -7,7 +7,6 @@ import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.content.Intent;
 import android.widget.TextView;
-import android.widget.VideoView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Random;
 public class CandyCrushActivity extends AppCompatActivity {
     private ImageView selectedCell = null;
     private int selectedCellIndex = -1;
-    private ImageView[] gridCells; // Array para almacenar las celdas
+    private ImageView[] gridCells; // Array to store grid cells
     private int[] pieceDrawables = {
             R.drawable.c1,
             R.drawable.c2,
@@ -25,144 +24,136 @@ public class CandyCrushActivity extends AppCompatActivity {
             R.drawable.c5
     };
     private int gridSize = 5;
-    private int score = 0; // Variable para almacenar el puntaje
-    private int movesRemaining = 15; // Número de movimientos permitidos inicialmente
-    private TextView scoreTextView; // TextView para mostrar el puntaje
-    private TextView movesTextView; // TextView para mostrar movimientos restantes
-    private VideoView videoView; // VideoView para el fondo de video
+    private int score = 0; // Variable to store the score
+    private int movesRemaining = 15; // Initial allowed moves
+    private TextView scoreTextView; // TextView to display the score
+    private TextView movesTextView; // TextView to display remaining moves
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.candy_main);
 
-        scoreTextView = findViewById(R.id.scoreTextView); // Referencia al TextView de puntaje
-        movesTextView = findViewById(R.id.movesTextView); // Referencia al TextView de movimientos restantes
+        scoreTextView = findViewById(R.id.scoreTextView); // Reference to the score TextView
+        movesTextView = findViewById(R.id.movesTextView); // Reference to the moves TextView
+
 
         GridLayout gridLayout = findViewById(R.id.gridLayout);
         gridCells = new ImageView[gridSize * gridSize];
 
         Random random = new Random();
 
-        // Crear celdas con piezas aleatorias
+        // Create cells with random pieces
         for (int i = 0; i < gridSize * gridSize; i++) {
             ImageView cell = new ImageView(this);
 
-            // Crear LayoutParams con margen
             GridLayout.LayoutParams params = new GridLayout.LayoutParams(
                     GridLayout.spec(i / gridSize),
                     GridLayout.spec(i % gridSize)
             );
 
-            // Tamaño de cada celda (ajustado para márgenes)
+            // Set cell size
             int cellSize = getResources().getDisplayMetrics().widthPixels / gridSize - 40;
             params.width = cellSize;
             params.height = cellSize;
-            params.setMargins(10, 10, 10, 10); // Margen entre celdas
+            params.setMargins(10, 10, 10, 10); // Margin between cells
 
             cell.setLayoutParams(params);
 
-            // Fondo redondeado de la celda
             cell.setBackgroundResource(R.drawable.cell_background);
 
-            // Asignar una pieza aleatoria como imagen encima de la celda
+            // Assign a random piece as the image on top of the cell
             int randomPiece = pieceDrawables[random.nextInt(pieceDrawables.length)];
             cell.setImageResource(randomPiece);
-            cell.setScaleType(ImageView.ScaleType.CENTER_INSIDE); // Ajustar imagen dentro de la celda
+            cell.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
 
-            // Establecer la acción de clic para intercambiar las piezas
+            // Click action to swap pieces
             int finalI = i;
             cell.setOnClickListener(v -> {
-                // Si no hay movimientos restantes, no hacer nada
                 if (movesRemaining <= 0) {
                     return;
                 }
 
-                // Si no hay celda seleccionada, seleccionar la actual
+                // If no cell is selected, select the current one
                 if (selectedCell == null) {
                     selectedCell = (ImageView) v;
                     selectedCellIndex = finalI;
-                    selectedCell.setAlpha(0.7f); // Indicar que está seleccionada (opacidad)
+                    selectedCell.setAlpha(0.7f);
                 } else {
-                    // Verificar si las celdas son adyacentes
+                    // Check if cells are adjacent
                     if (selectedCell != v && areAdjacent(selectedCellIndex, finalI, gridSize)) {
-                        // Intercambiar las piezas si son adyacentes
+                        // Swap pieces if adjacent
                         ImageView currentCell = (ImageView) v;
 
-                        // Intercambiar las imágenes
+                        // Swap images
                         int selectedPieceRes = (Integer) selectedCell.getTag();
                         int currentPieceRes = (Integer) currentCell.getTag();
 
                         selectedCell.setImageResource(currentPieceRes);
                         currentCell.setImageResource(selectedPieceRes);
 
-                        // Mantener el estado del tag con la nueva pieza
+                        // Maintain tag state with the new piece
                         selectedCell.setTag(currentPieceRes);
                         currentCell.setTag(selectedPieceRes);
 
-                        // Restaurar la opacidad de la celda seleccionada
+                        // Restore opacity of the selected cell
                         selectedCell.setAlpha(1f);
 
-                        // Limpiar la celda seleccionada
+                        // Clear the selected cell
                         selectedCell = null;
                         selectedCellIndex = -1;
 
-
-                        // Reducir movimientos restantes y actualizar el TextView
+                        // Decrease remaining moves and update the TextView
                         movesRemaining--;
                         updateMovesText();
 
-                        // Comprobar si hay coincidencias
                         checkAndHandleMatches();
-                    } else {
-                        // Si no son adyacentes, mostrar mensaje
                     }
                 }
             });
 
-            // Establecer el recurso de la pieza como tag (para intercambiar más fácilmente)
+            // Set the piece resource as a tag (for easier swapping)
             cell.setTag(randomPiece);
 
-            // Guardar la referencia de la celda
+            // Store the cell reference
             gridCells[i] = cell;
 
-            // Añadir celda al GridLayout
+            // Add cell to the GridLayout
             gridLayout.addView(cell);
         }
-
-        // Actualizar el TextView de movimientos al iniciar
+        // Update moves TextView on start
         updateMovesText();
     }
 
     private void updateMovesText() {
-        movesTextView.setText("Movimientos restantes: " + movesRemaining);
+        movesTextView.setText("Moves remaining: " + movesRemaining);
 
-        // Si no hay movimientos restantes, iniciar GameOverActivity
+        // If no moves are left, start GameOverActivity
         if (movesRemaining == 0) {
             Intent gameOverIntent = new Intent(CandyCrushActivity.this, GameOverCandyActivity.class);
-            gameOverIntent.putExtra("SCORE", score); // Pasar el puntaje actual
+            gameOverIntent.putExtra("SCORE", score);
             startActivity(gameOverIntent);
-            finish(); // Finalizar MainActivity para evitar que el usuario vuelva atrás
+            finish();
         }
     }
 
-    // Método para verificar si dos celdas son adyacentes (horizontal o vertical)
+    // Check if two cells are adjacent (horizontal or vertical)
     private boolean areAdjacent(int index1, int index2, int gridSize) {
         int row1 = index1 / gridSize;
         int col1 = index1 % gridSize;
         int row2 = index2 / gridSize;
         int col2 = index2 % gridSize;
 
-        // Celdas adyacentes si están en la misma fila o columna
+        // Cells are adjacent if they are in the same row or column
         return (Math.abs(row1 - row2) == 1 && col1 == col2) || (Math.abs(col1 - col2) == 1 && row1 == row2);
     }
 
-    // Método para comprobar y manejar coincidencias (sin cambios)
+    // Check and handle matches (no changes)
     private void checkAndHandleMatches() {
         List<Integer> cellsToRemove = new ArrayList<>();
         int pointsEarned = 0;
 
-        // Comprobar filas para coincidencias horizontales
+        // Check rows for horizontal matches
         for (int row = 0; row < gridSize; row++) {
             for (int col = 0; col < gridSize - 2; col++) {
                 int index1 = row * gridSize + col;
@@ -179,7 +170,7 @@ public class CandyCrushActivity extends AppCompatActivity {
             }
         }
 
-        // Comprobar columnas para coincidencias verticales
+        // Check columns for vertical matches
         for (int col = 0; col < gridSize; col++) {
             for (int row = 0; row < gridSize - 2; row++) {
                 int index1 = row * gridSize + col;
@@ -196,7 +187,7 @@ public class CandyCrushActivity extends AppCompatActivity {
             }
         }
 
-        // Eliminar celdas y generar nuevas piezas
+        // Deletes cells and generate new pieces
         for (int index : cellsToRemove) {
             gridCells[index].setVisibility(View.INVISIBLE);
         }
@@ -211,7 +202,7 @@ public class CandyCrushActivity extends AppCompatActivity {
         }
 
         score += pointsEarned;
-        scoreTextView.setText("Puntos: " + score);
+        scoreTextView.setText("Points: " + score);
     }
 
     private void animatePieceAppearance(ImageView cell) {

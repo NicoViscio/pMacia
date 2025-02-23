@@ -15,13 +15,8 @@ import java.util.Locale;
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "LeaderboardDB";
     private static final int DATABASE_VERSION = 1;
-
-    // Tabla para Candy Crush
     private static final String TABLE_CANDY = "candy_scores";
-    // Tabla para 2048
     private static final String TABLE_DOSMIL = "dosmil_scores";
-
-    // Columnas comunes
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_GAME_NUMBER = "game_number";
     private static final String COLUMN_SCORE = "score";
@@ -33,14 +28,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        // Crear tabla Candy Crush
+        // Candi Crush table creation
         String createCandyTable = "CREATE TABLE " + TABLE_CANDY + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_GAME_NUMBER + " INTEGER,"
                 + COLUMN_SCORE + " INTEGER,"
                 + COLUMN_DATE + " TEXT)";
 
-        // Crear tabla 2048
+        // 2048 table creation
         String createDosmilTable = "CREATE TABLE " + TABLE_DOSMIL + "("
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + COLUMN_GAME_NUMBER + " INTEGER,"
@@ -58,12 +53,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Insertar nuevo puntaje de Candy Crush
+    // Insert Candy Crush new score
     public void insertCandyScore(int score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        // Obtener el siguiente número de juego
         int gameNumber = getNextGameNumber(TABLE_CANDY);
 
         values.put(COLUMN_GAME_NUMBER, gameNumber);
@@ -74,12 +68,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Insertar nuevo puntaje de 2048
+    // Insert 2048 new score
+
     public void insertDosmilScore(int score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        // Obtener el siguiente número de juego
         int gameNumber = getNextGameNumber(TABLE_DOSMIL);
 
         values.put(COLUMN_GAME_NUMBER, gameNumber);
@@ -90,12 +84,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    // Obtener todos los puntajes de Candy Crush
+    // Gets all Candy Crush scores
     public List<ScoreEntry> getCandyScores() {
         return getScores(TABLE_CANDY);
     }
 
-    // Obtener todos los puntajes de 2048
+    // Gets all 2048 scores
     public List<ScoreEntry> getDosmilScores() {
         return getScores(TABLE_DOSMIL);
     }
@@ -107,7 +101,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query(tableName,
                 new String[]{COLUMN_GAME_NUMBER, COLUMN_SCORE, COLUMN_DATE},
                 null, null, null, null,
-                COLUMN_GAME_NUMBER + " DESC", "10"); // Limitar a los últimos 10 juegos
+                COLUMN_GAME_NUMBER + " DESC", "10");
 
         if (cursor.moveToFirst()) {
             do {
@@ -140,7 +134,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return sdf.format(new Date());
     }
 
-    // Clase para almacenar los datos de cada entrada
     public static class ScoreEntry {
         public int gameNumber;
         public int score;
