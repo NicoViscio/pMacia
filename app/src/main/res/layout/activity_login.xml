@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Usuario"
+            android:hint="User"
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHighlight="#8F7B65"
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:hint="Contraseña"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="#000000"
@@ -40,14 +40,14 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:backgroundTint="#8F7B65"
-            android:text="Iniciar Sesión" />
+            android:text="Log In" />
 
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#8F7B65"
-            android:text="Crear Cuenta" />
+            android:text="Register" />
 
     </LinearLayout>
 </FrameLayout>

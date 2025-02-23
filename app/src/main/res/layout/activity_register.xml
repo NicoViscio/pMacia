@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Usuario"
+            android:hint="User"
             android:textAlignment="center"
             android:textColor="#8F7B65"
             android:textColorHint="#8F7B65" />
@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Contraseña"
+            android:hint="Password"
             android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="#8F7B65"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:hint="Confirmar Contraseña"
+            android:hint="Confirm Password"
             android:inputType="textPassword"
             android:textAlignment="center"
             android:textColor="#8F7B65"
@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:buttonTint="#878686"
-            android:text="Acepto los términos y condiciones"
+            android:text="I accept the terms and conditions"
             android:textColor="#8F7B65"
             android:textColorHint="#8F7B65" />
 
@@ -59,7 +59,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#8F7B65"
-            android:text="Crear Cuenta" />
+            android:text="Create Account" />
 
     </LinearLayout>
 
