@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".GameOverCandyActivity"
-    android:background="#E91E63">  <!-- Color rosa característico de Candy Crush -->
+    android:background="#FAF8EF">  <!-- Color rosa característico de Candy Crush -->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Game Over"
-            android:textColor="#FFFFFF"
+            android:textColor="#8F7B65"
             android:textSize="48sp"
             android:textStyle="bold"
             android:shadowColor="#000000"
@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Score: 0"
-            android:textColor="#FFFFFF"
+            android:textColor="#8F7B65"
             android:textSize="36sp"
             android:textStyle="bold"
             android:shadowColor="#000000"
@@ -45,7 +45,7 @@
             android:layout_width="200dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:background="@drawable/rounded_button"
+            android:backgroundTint="#8F7B65"
             android:text="Play Again"
             android:textAllCaps="false"
             android:textColor="#FFFFFF"
@@ -55,12 +55,12 @@
             android:id="@+id/goBack"
             android:layout_width="200dp"
             android:layout_height="60dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#8F7B65"
             android:text="Go Back"
-            android:textSize="20sp"
             android:textAllCaps="false"
-            android:background="@drawable/rounded_button"
             android:textColor="#FFFFFF"
-            android:layout_marginTop="32dp"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
 

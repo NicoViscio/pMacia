@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black">
+    android:background="#FAF8EF">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,9 +19,9 @@
             android:layout_marginBottom="8dp"
             android:hint="Usuario"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textColorHighlight="#E97171"
-            android:textColorHint="#A0FFFFFF" />
+            android:textColor="#000000"
+            android:textColorHighlight="#8F7B65"
+            android:textColorHint="#8F7B65" />
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -31,22 +31,22 @@
             android:hint="Contraseña"
             android:inputType="textPassword"
             android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#A0FFFFFF" />
+            android:textColor="#000000"
+            android:textColorHint="#8F7B65" />
 
         <Button
             android:id="@+id/buttonLogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:backgroundTint="#2BFFFFFF"
+            android:backgroundTint="#8F7B65"
             android:text="Iniciar Sesión" />
 
         <Button
             android:id="@+id/buttonRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#2BFFFFFF"
+            android:backgroundTint="#8F7B65"
             android:text="Crear Cuenta" />
 
     </LinearLayout>

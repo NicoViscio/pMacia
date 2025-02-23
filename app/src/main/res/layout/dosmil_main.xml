@@ -55,7 +55,7 @@
             android:text="Menu"
             android:textSize="18sp"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/game_button_background"
+            android:backgroundTint="#8F7B65"
             android:textColor="#FFFFFF"/>
 
         <Button
@@ -66,7 +66,7 @@
             android:text="Restart"
             android:textSize="18sp"
             android:layout_marginStart="8dp"
-            android:background="@drawable/game_button_background"
+            android:backgroundTint="#8F7B65"
             android:textColor="#FFFFFF"/>
 
     </LinearLayout>
@@ -79,7 +79,7 @@
         android:text="End Game"
         android:textSize="24sp"
         android:padding="16dp"
-        android:background="@drawable/end_game_button_background"
+        android:backgroundTint="#E74C3C"
         android:textColor="#FFFFFF"/>
 
 </LinearLayout>

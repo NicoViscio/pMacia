@@ -36,21 +36,6 @@ public class CandyCrushActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.candy_main);
 
-        // Configurar el VideoView para el fondo de video
-        videoView = findViewById(R.id.videoBackground);
-        videoView.setVideoPath("android.resource://" + getPackageName() + "/" + R.raw.background1);
-
-        videoView.setOnPreparedListener(mp -> {
-            mp.setLooping(true); // Repetir el video
-
-            // Ajustar para que ocupe todo el espacio sin bordes blancos
-            videoView.setScaleX(1.2f); // Puedes ajustar el factor si es necesario
-            videoView.setScaleY(1.2f);
-
-            // Inicia el video
-            videoView.start();
-        });
-
         scoreTextView = findViewById(R.id.scoreTextView); // Referencia al TextView de puntaje
         movesTextView = findViewById(R.id.movesTextView); // Referencia al TextView de movimientos restantes
 
@@ -78,7 +63,7 @@ public class CandyCrushActivity extends AppCompatActivity {
             cell.setLayoutParams(params);
 
             // Fondo redondeado de la celda
-            cell.setBackgroundResource(R.drawable.cell_background_c);
+            cell.setBackgroundResource(R.drawable.cell_background);
 
             // Asignar una pieza aleatoria como imagen encima de la celda
             int randomPiece = pieceDrawables[random.nextInt(pieceDrawables.length)];
