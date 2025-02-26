@@ -3,6 +3,7 @@ package com.example.project_final;
 import android.animation.ObjectAnimator;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.content.Intent;
@@ -33,6 +34,7 @@ public class CandyCrushActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.candy_main);
+        Button btnReturn = findViewById(R.id.atras);
 
         scoreTextView = findViewById(R.id.scoreTextView); // Reference to the score TextView
         movesTextView = findViewById(R.id.movesTextView); // Reference to the moves TextView
@@ -123,6 +125,14 @@ public class CandyCrushActivity extends AppCompatActivity {
         }
         // Update moves TextView on start
         updateMovesText();
+
+        btnReturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CandyCrushActivity.this, GameSelectionActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void updateMovesText() {
@@ -215,4 +225,5 @@ public class CandyCrushActivity extends AppCompatActivity {
         scaleX.start();
         scaleY.start();
     }
+
 }
